@@ -12,10 +12,11 @@
    - Navigate to `LiveCodingInterview/ConcurrencyManager.swift` (Task 4)
    - Navigate to `LiveCodingInterview/MemoryManager.swift` (Task 5)
    - Navigate to `LiveCodingInterview/OrderPublisher.swift` (Task 6)
+   - Navigate to `LiveCodingInterview/OrderLegacy.swift` (Task 7)
 
 3. **Run the tests**:
    - Press `⌘U` to run all tests
-   - All 34 tests will fail initially (expected)
+   - All 42 tests will fail initially (expected)
    - After implementing each task, press `⌘U` again to see progress
 
 ---
@@ -114,6 +115,22 @@ Implement missing functionality and fix subscription issues in `OrderPublisher.s
 - `getOrdersPublisher()` should return a publisher that emits order updates
 - Subscriptions should persist across multiple publish events
 - Multiple subscribers should be able to receive updates
+- All tests should pass
+
+---
+
+### Task 7: Objective-C to Swift Migration
+
+Migrate legacy Objective-C-style code in `OrderLegacy.swift` to modern Swift patterns.
+
+**Requirements**:
+- Replace NSCoding with Codable for serialization
+- Convert to struct (value type) where appropriate instead of class
+- Replace completion handlers with async/await
+- Use Swift native types (String, Double) instead of Foundation types (NSString, NSNumber)
+- Replace NSDictionary with type-safe structs
+- Use modern observer pattern (Combine/delegate) instead of NotificationCenter
+- Maintain backward compatibility with existing NSCoding data
 - All tests should pass
 
 ---
