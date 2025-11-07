@@ -10,10 +10,11 @@
 2. **Open the files to edit**:
    - Navigate to `LiveCodingInterview/OrderManager.swift` (Tasks 1-3)
    - Navigate to `LiveCodingInterview/ConcurrencyManager.swift` (Task 4)
+   - Navigate to `LiveCodingInterview/MemoryManager.swift` (Task 5)
 
 3. **Run the tests**:
    - Press `⌘U` to run all tests
-   - All 22 tests will fail initially (expected)
+   - All 28 tests will fail initially (expected)
    - After implementing each task, press `⌘U` again to see progress
 
 ---
@@ -98,6 +99,26 @@ func updateOrders(_ newOrders: [Order]) {
 
 // Expected (safe):
 // Refactor to use async/await and proper thread safety
+```
+
+---
+
+### Task 5: Memory Management
+
+Fix the retain cycles in `MemoryManager.swift`.
+
+The current implementation has memory leaks.
+
+**Example**:
+```swift
+// Current (memory leak):
+orderCache?.onOrdersUpdated = { newOrders in
+    self.orders = newOrders
+    self.processOrders()
+}
+
+// Expected (no leak):
+// Fix retain cycles using weak/unowned self
 ```
 
 ---
