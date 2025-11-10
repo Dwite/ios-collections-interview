@@ -30,6 +30,17 @@
 		E8469A042EBE470000E4ECD8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		25614E4D2EC20622008C16E7 /* Exceptions for "LiveCodingInterviewTests" folder in "LiveCodingInterviewTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ConcurrencyManagerTests.swift,
+				OrderLegacyTests.swift,
+			);
+			target = E84698EA2EBE466800E4ECD8 /* LiveCodingInterviewTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E84698E02EBE466700E4ECD8 /* LiveCodingInterview */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -38,6 +49,9 @@
 		};
 		E84698EE2EBE466800E4ECD8 /* LiveCodingInterviewTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				25614E4D2EC20622008C16E7 /* Exceptions for "LiveCodingInterviewTests" folder in "LiveCodingInterviewTests" target */,
+			);
 			path = LiveCodingInterviewTests;
 			sourceTree = "<group>";
 		};
@@ -397,10 +411,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thredup.ios.LiveCodingInterview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -439,10 +453,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thredup.ios.LiveCodingInterview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -467,8 +481,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thredup.ios.LiveCodingInterviewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -492,8 +506,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thredup.ios.LiveCodingInterviewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,8 +530,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thredup.ios.LiveCodingInterviewUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -540,8 +554,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thredup.ios.LiveCodingInterviewUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

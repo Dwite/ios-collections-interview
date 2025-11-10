@@ -32,7 +32,7 @@ class OrderManager {
     ///   - customerId: Customer ID to filter by
     /// - Returns: Array of orders for that customer, sorted by amount descending
     func getCustomerOrders(orders: [Order], customerId: String) -> [Order] {
-        // TODO: Implement using filter and sorted
+        // TODO: Implement
         return []
     }
 
@@ -54,7 +54,7 @@ class OrderManager {
     /// - Parameter orders: Array of all orders
     /// - Returns: Dictionary mapping customerId to total amount spent
     func getTotalSpendingPerCustomer(orders: [Order]) -> [String: Double] {
-        // TODO: Implement using dictionary and reduce/iteration
+        // TODO: Implement
         return [:]
     }
 
@@ -79,7 +79,7 @@ class OrderManager {
     ///   - limit: Number of top customers to return
     /// - Returns: Array of tuples (customerId, totalSpending) sorted by spending descending
     func getTopCustomers(orders: [Order], limit: Int) -> [(customerId: String, totalSpending: Double)] {
-        // TODO: Implement using dictionary aggregation + sorting + prefix
+        // TODO: Implement
         // Hint: Reuse getTotalSpendingPerCustomer logic
         return []
     }
