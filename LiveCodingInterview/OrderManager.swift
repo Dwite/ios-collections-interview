@@ -32,7 +32,6 @@ class OrderManager {
     ///   - customerId: Customer ID to filter by
     /// - Returns: Array of orders for that customer, sorted by amount descending
     func getCustomerOrders(orders: [Order], customerId: String) -> [Order] {
-        // TODO: Implement using filter and sorted
         // TODO: Implement
         return []
     }
