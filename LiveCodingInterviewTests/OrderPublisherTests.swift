@@ -23,7 +23,7 @@ final class OrderPublisherTests: XCTestCase {
 
     func test_task6_getOrdersPublisher_emitsValues() {
         // Given
-        let expectation = expectation(description: "Publisher should emit orders")
+        let expectation = expectation(description: "Publisher should emit new orders only once")
         let orders = [
             Order(id: "1", customerId: "A", amount: 100),
             Order(id: "2", customerId: "B", amount: 200)
@@ -174,4 +174,44 @@ final class OrderPublisherTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
         XCTAssertEqual(callCount, 2, "High value subscription should persist")
     }
+
+    func test_fetchOrders_emitsOrders() {
+        // Given
+        let expectation = expectation(description: "Should receive orders from fetchOrders")
+        var receivedOrders: [Order] = []
+        var receivedError: Error?
+
+        // When
+        publisher.fetchOrders()
+            .sink(
+                receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        expectation.fulfill()
+                    case .failure(let error):
+                        receivedError = error
+                    }
+                },
+                receiveValue: { orders in
+                    receivedOrders = orders
+                }
+            )
+            .store(in: &cancellables)
+
+        // Then
+        wait(for: [expectation], timeout: 2.0)
+        XCTAssertNil(receivedError, "Should not receive an error")
+        XCTAssertEqual(receivedOrders.count, 3, "Should receive 3 orders")
+    }
+
+    // MARK: - ordersFromPublisher() Tests
+
+    func test_ordersFromPublisher_returnsOrders() async throws {
+        // Given & When
+        let orders = try await publisher.ordersFromPublisher()
+
+        // Then
+        XCTAssertEqual(orders.count, 3, "Should receive 3 orders")
+    }
+
 }
