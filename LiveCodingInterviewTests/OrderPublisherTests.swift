@@ -23,7 +23,7 @@ final class OrderPublisherTests: XCTestCase {
 
     func test_task6_getOrdersPublisher_emitsValues() {
         // Given
-        let expectation = expectation(description: "Publisher should emit orders")
+        let expectation = expectation(description: "Publisher should emit new orders only once")
         let orders = [
             Order(id: "1", customerId: "A", amount: 100),
             Order(id: "2", customerId: "B", amount: 200)
