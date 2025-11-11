@@ -17,9 +17,6 @@ class OrderPublisher {
 
     private var orders: [Order] = []
     private let orderSubject = CurrentValueSubject<[Order], Never>([])
-
-    private let orderSubject = PassthroughSubject<[Order], Never>()
-    private var highValueCancellables: Set<AnyCancellable> = []
     
     func publishOrders(_ newOrders: [Order]) {
         orders = newOrders
@@ -27,8 +24,8 @@ class OrderPublisher {
     }
     
     func getOrdersPublisher() -> AnyPublisher<[Order], Never> {
+        // TODO: Implement
         fatalError("Not implemented")
-        orderSubject.eraseToAnyPublisher()
     }
 
     func subscribeToHighValueOrders(threshold: Double, handler: @escaping ([Order]) -> Void) {
