@@ -174,4 +174,44 @@ final class OrderPublisherTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
         XCTAssertEqual(callCount, 2, "High value subscription should persist")
     }
+
+    func test_fetchOrders_emitsOrders() {
+        // Given
+        let expectation = expectation(description: "Should receive orders from fetchOrders")
+        var receivedOrders: [Order] = []
+        var receivedError: Error?
+
+        // When
+        publisher.fetchOrders()
+            .sink(
+                receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        expectation.fulfill()
+                    case .failure(let error):
+                        receivedError = error
+                    }
+                },
+                receiveValue: { orders in
+                    receivedOrders = orders
+                }
+            )
+            .store(in: &cancellables)
+
+        // Then
+        wait(for: [expectation], timeout: 2.0)
+        XCTAssertNil(receivedError, "Should not receive an error")
+        XCTAssertEqual(receivedOrders.count, 3, "Should receive 3 orders")
+    }
+
+    // MARK: - ordersFromPublisher() Tests
+
+    func test_ordersFromPublisher_returnsOrders() async throws {
+        // Given & When
+        let orders = try await publisher.ordersFromPublisher()
+
+        // Then
+        XCTAssertEqual(orders.count, 3, "Should receive 3 orders")
+    }
+
 }
