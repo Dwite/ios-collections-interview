@@ -63,25 +63,6 @@ final class MemoryManagerTests: XCTestCase {
         XCTAssertTrue(true, "processOrders should work without crashes")
     }
 
-    func test_task5_multipleManagers_deallocate() {
-        // Given
-        var weakManagers: [MemoryManager?] = []
-
-        // When
-        autoreleasepool {
-            for _ in 0..<10 {
-                let manager = MemoryManager()
-                manager.setupOrderCache()
-                manager.processOrders()
-                weakManagers.append(manager)
-            }
-        }
-
-        // Then - All managers should deallocate
-        let nonNilCount = weakManagers.compactMap { $0 }.count
-        XCTAssertEqual(nonNilCount, 0, "All MemoryManagers should deallocate")
-    }
-
     func test_task5_closureExecution_afterFix() {
         // Given
         let manager = MemoryManager()

@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - Task 5: Memory Management
 
-class MemoryManager {
+final class MemoryManager: NSObject {
 
     /// Fix the memory leaks caused by retain cycles in the closures below.
     ///
@@ -38,7 +38,7 @@ class MemoryManager {
     // TODO: Fix the retain cycles to meet requirements
 }
 
-class OrderCache {
+class OrderCache: NSObject {
     var onOrdersUpdated: (([Order]) -> Void)?
 
     func fetchOrders(completion: @escaping ([Order]) -> Void) {
