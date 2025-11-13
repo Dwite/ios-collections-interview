@@ -8,7 +8,7 @@ class OrderPublisher {
     /// Implement the missing functionality and fix subscription issues.
     ///
     /// Requirements:
-    /// - getOrdersPublisher() should return a publisher that emits order updates
+    /// - getOrdersPublisher() should return a publisher that emits order updates made from outside through publishOrders(_ newOrders: [Order])
     /// - Subscriptions should persist across multiple publish events
     /// - Multiple subscribers should be able to receive updates
     /// - All tests should pass
@@ -40,7 +40,7 @@ class OrderPublisher {
         fatalError("Not implemented")
     }
     
-    //Convertes publisher into async method
+    //Converts publisher into async method
     func ordersFromPublisher() async throws -> [Order] {
         // TODO: Use next method returning a publidher to return orders array asynchronously
         // func fetchOrdersPublisher() -> AnyPublisher<[Order], Error>
@@ -48,10 +48,12 @@ class OrderPublisher {
     }
 }
 
+
+//Simulated API used in convertion methods above - don't change it
 private extension OrderPublisher {
     func fetchOrders() async throws -> [Order] {
         // Simulate network delay of 1 second
-        try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second in nanoseconds
+        try await Task.sleep(nanoseconds: 1_000_000_000)
         
         // Return mock orders
         let orders = [

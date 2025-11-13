@@ -34,8 +34,8 @@
 		25614E4D2EC20622008C16E7 /* Exceptions for "LiveCodingInterviewTests" folder in "LiveCodingInterviewTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ConcurrencyManagerTests.swift,
-				OrderLegacyTests.swift,
+				_4_ConcurrencyManagerTests.swift,
+				_7_OrderLegacyTests.swift,
 			);
 			target = E84698EA2EBE466800E4ECD8 /* LiveCodingInterviewTests */;
 		};

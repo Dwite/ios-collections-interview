@@ -5,10 +5,6 @@ import Foundation
 /// Migrate this legacy Objective-C-style code to modern Swift patterns
 ///
 /// Requirements:
-/// - Replace NSCoding with Codable
-/// - Convert mutable class to immutable struct where appropriate
-/// - Replace NSDictionary parsing with type-safe Codable
-/// - Remove NSObject inheritance where not needed
 /// - Replace completion handlers with async/await
 /// - Use Swift native types instead of Foundation types (String vs NSString)
 /// - Maintain backward compatibility for existing data
@@ -64,9 +60,6 @@ class LegacyOrderManager: NSObject, NSCoding {
 }
 
 // TODO: Migrate to modern Swift:
-// - Use Codable instead of NSCoding
-// - Use struct instead of class where appropriate
 // - Use async/await instead of completion handlers
-// - Use typed structs instead of dictionaries
 // - Use Swift String/Double instead of NSString/NSNumber
 // - Use Combine or proper observer pattern instead of NotificationCenter

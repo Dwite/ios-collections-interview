@@ -5,14 +5,12 @@ import Foundation
 class ConcurrencyManager {
 
     /// Refactor this code to use modern Swift concurrency (async/await)
-    /// and make it thread-safe.
     ///
     /// Requirements:
     /// - Convert callback-based methods to async/await
-    /// - Ensure thread-safe access to the orders array (no data races)
-    /// - All tests should pass without crashes or race conditions
+    /// - All tests should pass
     ///
-    /// Current implementation (has issues):
+    /// Current implementation:
 
     private var orders: [Order] = []
 

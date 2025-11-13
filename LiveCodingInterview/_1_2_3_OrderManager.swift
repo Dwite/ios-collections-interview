@@ -12,7 +12,7 @@ struct Order {
 
 class OrderManager {
 
-    // MARK: - Task 1: Array Filtering (Easy - 15 min)
+    // MARK: - Task 1: Array Filtering
 
     /// Find all orders for a specific customer and return them sorted by amount (highest first)
     ///
@@ -36,7 +36,7 @@ class OrderManager {
         return []
     }
 
-    // MARK: - Task 2: Dictionary Aggregation (Medium - 20 min)
+    // MARK: - Task 2: Dictionary Aggregation
 
     /// Calculate total spending per customer
     ///
@@ -58,7 +58,7 @@ class OrderManager {
         return [:]
     }
 
-    // MARK: - Task 3: Top N with Sorting (Hard - 25 min)
+    // MARK: - Task 3: Top N with Sorting
 
     /// Find the top N customers by total spending
     ///
@@ -74,13 +74,15 @@ class OrderManager {
     /// // Returns: [("C", 300.0), ("B", 200.0)]
     /// ```
     ///
+    /// HINT: Reuse getTotalSpendingPerCustomer logic if needed
+    ///
     /// - Parameters:
     ///   - orders: Array of all orders
     ///   - limit: Number of top customers to return
     /// - Returns: Array of tuples (customerId, totalSpending) sorted by spending descending
     func getTopCustomers(orders: [Order], limit: Int) -> [(customerId: String, totalSpending: Double)] {
         // TODO: Implement
-        // Hint: Reuse getTotalSpendingPerCustomer logic
+        // HINT: Reuse getTotalSpendingPerCustomer logic if needed
         return []
     }
 }
