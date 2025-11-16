@@ -183,8 +183,9 @@ final class OrderPublisherTests: XCTestCase {
         var secondCallOrders: [Order] = []
         var receivedError: Error?
 
-        // When - First call
-        publisher.fetchOrders()
+        // When - First subscriber
+        let fetch_publicher = publisher.fetchOrders()
+        fetch_publicher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -203,8 +204,8 @@ final class OrderPublisherTests: XCTestCase {
         // Wait for first call to complete
         wait(for: [expectation1], timeout: 2.0)
         
-        // Second call
-        publisher.fetchOrders()
+        // Second subscriber
+        fetch_publicher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
