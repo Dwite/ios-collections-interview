@@ -177,41 +177,79 @@ final class OrderPublisherTests: XCTestCase {
 
     func test_fetchOrders_emitsOrders() {
         // Given
-        let expectation = expectation(description: "Should receive orders from fetchOrders")
-        var receivedOrders: [Order] = []
+        let expectation1 = expectation(description: "Should receive orders from first fetchOrders call")
+        let expectation2 = expectation(description: "Should receive orders from second fetchOrders call")
+        var firstCallOrders: [Order] = []
+        var secondCallOrders: [Order] = []
         var receivedError: Error?
 
-        // When
-        publisher.fetchOrders()
+        // When - First subscriber
+        let fetch_publicher = publisher.fetchOrders()
+        fetch_publicher
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
                     case .finished:
-                        expectation.fulfill()
+                        expectation1.fulfill()
                     case .failure(let error):
                         receivedError = error
                     }
                 },
                 receiveValue: { orders in
-                    receivedOrders = orders
+                    firstCallOrders = orders
+                }
+            )
+            .store(in: &cancellables)
+
+        // Wait for first call to complete
+        wait(for: [expectation1], timeout: 2.0)
+        
+        // Second subscriber
+        fetch_publicher
+            .sink(
+                receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        expectation2.fulfill()
+                    case .failure(let error):
+                        receivedError = error
+                    }
+                },
+                receiveValue: { orders in
+                    secondCallOrders = orders
                 }
             )
             .store(in: &cancellables)
 
         // Then
-        wait(for: [expectation], timeout: 2.0)
+        wait(for: [expectation2], timeout: 2.0)
         XCTAssertNil(receivedError, "Should not receive an error")
-        XCTAssertEqual(receivedOrders.count, 3, "Should receive 3 orders")
+        XCTAssertEqual(firstCallOrders.count, 3, "Should receive 3 orders from first call")
+        XCTAssertEqual(secondCallOrders.count, 3, "Should receive 3 orders from second call")
+        
+        // Verify orders are different
+        XCTAssertNotEqual(firstCallOrders[0].id, secondCallOrders[0].id, "First order IDs should be different")
+        XCTAssertNotEqual(firstCallOrders[0].customerId, secondCallOrders[0].customerId, "First order customer IDs should be different")
+        XCTAssertNotEqual(firstCallOrders[0].amount, secondCallOrders[0].amount, "First order amounts should be different")
     }
 
     // MARK: - ordersFromPublisher() Tests
 
     func test_ordersFromPublisher_returnsOrders() async throws {
-        // Given & When
-        let orders = try await publisher.ordersFromPublisher()
+        // Given & When - First call
+        let firstCallOrders = try await publisher.ordersFromPublisher()
+        
+        // Second call
+        let secondCallOrders = try await publisher.ordersFromPublisher()
 
         // Then
-        XCTAssertEqual(orders.count, 3, "Should receive 3 orders")
+        XCTAssertEqual(firstCallOrders.count, 3, "Should receive 3 orders from first call")
+        XCTAssertEqual(secondCallOrders.count, 3, "Should receive 3 orders from second call")
+        
+        // Verify orders are different
+        XCTAssertNotEqual(firstCallOrders[0].id, secondCallOrders[0].id, "First order IDs should be different")
+        XCTAssertNotEqual(firstCallOrders[0].customerId, secondCallOrders[0].customerId, "First order customer IDs should be different")
+        XCTAssertNotEqual(firstCallOrders[0].amount, secondCallOrders[0].amount, "First order amounts should be different")
     }
 
 }

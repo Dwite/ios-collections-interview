@@ -17,6 +17,7 @@ class OrderPublisher {
 
     private var orders: [Order] = []
     private let orderSubject = CurrentValueSubject<[Order], Never>([])
+    private var callCount: Int = 0
     
     func publishOrders(_ newOrders: [Order]) {
         orders = newOrders
@@ -55,20 +56,27 @@ private extension OrderPublisher {
         // Simulate network delay of 1 second
         try await Task.sleep(nanoseconds: 1_000_000_000)
         
-        // Return mock orders
+        // Increment call count to return different orders each time
+        callCount += 1
+        
+        // Return mock orders with varying data based on call count
         let orders = [
-            Order(id: "1", customerId: "A", amount: 100),
-            Order(id: "2", customerId: "B", amount: 250),
-            Order(id: "3", customerId: "C", amount: 300)
+            Order(id: "\(callCount)-1", customerId: "A\(callCount)", amount: 100.0 + Double(callCount * 10)),
+            Order(id: "\(callCount)-2", customerId: "B\(callCount)", amount: 250.0 + Double(callCount * 15)),
+            Order(id: "\(callCount)-3", customerId: "C\(callCount)", amount: 300.0 + Double(callCount * 20))
         ]
         return orders
     }
     
     func fetchOrdersPublisher() -> AnyPublisher<[Order], Error> {
+        // Increment call count to return different orders each time
+        callCount += 1
+        
+        // Return mock orders with varying data based on call count
         let orders = [
-            Order(id: "1", customerId: "A", amount: 100),
-            Order(id: "2", customerId: "B", amount: 250),
-            Order(id: "3", customerId: "C", amount: 300)
+            Order(id: "\(callCount)-1", customerId: "A\(callCount)", amount: 100.0 + Double(callCount * 10)),
+            Order(id: "\(callCount)-2", customerId: "B\(callCount)", amount: 250.0 + Double(callCount * 15)),
+            Order(id: "\(callCount)-3", customerId: "C\(callCount)", amount: 300.0 + Double(callCount * 20))
         ]
         
         return Just(orders)
