@@ -1,6 +1,6 @@
 import Foundation
 
-// MARK: - Task 4: Concurrency & Thread Safety
+// MARK: - Task 4.1: Concurrency & Thread Safety
 
 class ConcurrencyManager {
 
